@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ellis.order.dao.OrderDao">
+ 
+    <resultMap id="BaseResultMap" type="com.ellis.order.entity.Order">
+        <result column="orderId"  property="orderId" />
+        <result column="orderName"  property="orderName" />
+        <result column="price"  property="price" />
+    </resultMap>
+    
+   <select id="findList"  resultMap="BaseResultMap">
+        select * from test_order
+    </select>
+ 
+    <select id="getOrderByID"  resultMap="BaseResultMap">
+        select * from test_order where orderId = #{orderId}
+    </select>
+    
+    <insert id="addOrder" parameterType="com.ellis.order.entity.Order" >
+    	insert into test_order (ORDERID,ORDERNAME,PRICE)values(#{orderId},#{orderName},#{price})
+    	
+    </insert>
+    <update id="updateOrder" parameterType="com.ellis.order.entity.Order">
+    	update test_order 
+    	set orderName = #{orderName},price = #{price}
+    	where orderId = #{orderId}
+    </update>
+ 
+ 	<delete id="deleteById">
+ 		delete from test_order where orderId = #{orderId}
+ 	</delete>
+</mapper>

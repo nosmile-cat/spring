@@ -1,0 +1,51 @@
+##端口
+server:
+  port: 8780
+  
+##扫包
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.ellis.order.entity
+
+##注册中心配置
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://127.0.0.1:8760/eureka/
+    ##true，把自己注册到注册中心上，
+    register-with-eureka: true
+    ##检索服务信息
+    fetch-registry: true  
+##名称
+spring:
+  application:
+    name: ellis-configClient
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/huang
+    driver-class-name: com.mysql.jdbc.Driver
+  cloud:
+    ##配置中心
+    config:
+    ###git 文件名后缀
+      profile: prd
+      discovery:
+        ###配置服务中心
+        service-id: ellis-config-server
+        ###开启读取权限
+        enabled: true
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+    ##静态资源访问
+    static-path-pattern: /static/**
+management:
+  endpoints:
+    web:  
+      exposure:
+        include: "*"      
+##配置中心取不了参数就取这里的      
+myname: ellis
+age: 12

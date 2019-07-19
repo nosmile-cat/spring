@@ -1,0 +1,23 @@
+server:
+  port: 8888
+##注册中心配置
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://127.0.0.1:8760/eureka/
+    ##true，把自己注册到注册中心上，
+    register-with-eureka: true
+    ##检索服务信息
+    fetch-registry: true
+##名称
+spring:
+  application:
+    name: ellis-config-server
+  cloud:
+    config: 
+      server:
+        git:
+        ##读取地址环境
+          uri: https://github.com/nosmile-cat/config_file.git
+      label:  master
+    

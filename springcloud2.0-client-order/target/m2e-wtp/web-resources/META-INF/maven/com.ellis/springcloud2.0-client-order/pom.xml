@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.ellis</groupId>
+  <artifactId>springcloud2.0-client-order</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <parent>
+  	<groupId>org.springframework.boot</groupId>
+  	<artifactId>spring-boot-starter-parent</artifactId>
+  	<version>2.0.1.RELEASE</version>
+  </parent>
+    <!-- 管理依赖 -->
+  <dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-dependencies</artifactId>
+			<version>Finchley.M7</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+	</dependencies>
+  </dependencyManagement>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-web</artifactId>
+  	</dependency>
+  	<!--Srpingboot整合eureka客户端 -->
+	<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+	</dependency>
+	<!-- Springcloud整个config-client -->
+	<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-config-client</artifactId>
+	</dependency>
+	<!-- actuator监控中心 -->
+  	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-actuator</artifactId>
+	</dependency>
+	<!--  springboot 外部tomcat支持，只能另外引入。内部tomcat不支持-->
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-tomcat</artifactId>
+	</dependency>
+	<!-- 转json -->
+	<dependency>
+	   <groupId>com.alibaba</groupId>
+	   <artifactId>fastjson</artifactId>
+	   <version>1.2.49</version>
+	</dependency>
+	<!-- jsp -->
+  	<dependency>
+  		<groupId>org.apache.tomcat.embed</groupId>
+  		<artifactId>tomcat-embed-jasper</artifactId>
+	</dependency>
+	<!--JSP动态刷新-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+    <!-- jstl -->
+    <dependency>
+		<groupId>jstl</groupId>
+		<artifactId>jstl</artifactId>
+		<version>1.2</version>
+	</dependency>
+	<!-- 标签 -->
+	<dependency>
+		<groupId>taglibs</groupId>
+		<artifactId>standard</artifactId>
+		<version>1.1.2</version>
+	</dependency>
+	 <!-- mybatis -->
+  	<dependency>
+  		<groupId>org.mybatis.spring.boot</groupId>
+  		<artifactId>mybatis-spring-boot-starter</artifactId>
+  		<version>1.1.1</version>
+	</dependency>
+	<!-- mysql 依赖 -->
+  	<dependency>
+  		<groupId>mysql</groupId>
+  		<artifactId>mysql-connector-java</artifactId>
+	</dependency>
+  </dependencies>
+
+  <!-- 注意：这里必须要添加，否者各种依赖有问题 -->
+  <repositories>
+	<repository>
+		<id>spring-milestones</id>
+		<name>Spring Milestones</name>
+		<url>https://repo.spring.io/libs-milestone</url>
+		<snapshots>
+			<enabled>false</enabled>
+		</snapshots>
+	</repository>
+  </repositories>
+</project>
