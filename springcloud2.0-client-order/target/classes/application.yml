@@ -18,7 +18,7 @@ eureka:
     fetch-registry: true  
 ##名称
 spring:
-  application:
+  application: 
     name: ellis-configClient
   datasource:
     username: root

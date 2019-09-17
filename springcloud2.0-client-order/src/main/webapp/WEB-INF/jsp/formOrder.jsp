@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 <title>Insert title here</title>
 </head>
 <body>
 <form action="/addOrder" method="post">
-	<input type="hidden" name="orderId" value="${order.orderId}"/>
+	<input type="hidden" name="id" value="${order.id}"/>
 	<table>
 		<tr>
 			<td>
@@ -22,7 +23,7 @@
 		</tr>
 		<tr>
 			<td>
-				<div style="text-align:center"><input type="submit" value="提交"/></div>
+				<div style="text-align:center"><input type="submit" value="保存"/></div>
 			</td>
 		</tr>
 	</table>

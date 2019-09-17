@@ -10,19 +10,32 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="../static/js/jquery-1.12.3.min.js"></script>
+	<script type="text/javascript" src="../static/js/jquery-1.12.3.min.js"></script>
     <script src="../static/miniui/miniui.js" type="text/javascript"></script>
     <link href="../static/miniui/themes/default/miniui.css" rel="stylesheet" type="text/css" />
     <link href="../static/miniui/themes/icons.css" rel="stylesheet" type="text/css" />
 <script language='javascript'>
 	function edit(id){
-		 mini.open({
+		/* mini.open({
 		    title: '编辑',
-		    url: '/editOrder?id= '+id,
+		    url: '/editOrder?id='+id,
 		    allowResize: false,
 		    width: 400,height: 300,
-		    ondestroy: function(){
-		        //grid.reload();
+		    ondestroy: function(action){
+		    	window.location.href = '/orderList';
+		    }
+		}); */
+		window.location.href = '/editOrder?id='+id;
+	}
+	
+	function add(){
+		 mini.open({
+		    title: '新增',
+		    url: '/toAddOrder',
+		    allowResize: false,
+		    width: 400,height: 300,
+		    ondestroy: function(action){
+		    	window.location.href = '/orderList';
 		    }
 		});
 	}
@@ -31,7 +44,9 @@
 </head>
 <body>
 <form action="/addOrder" method="post">
-	<input type="hidden" name="orderId" value="${order.orderId}"/>
+	<input type="hidden" name="id" value="${order.id}"/>
+	<!-- <a style="border:1px solid #F00" onClick="add()" >新增</a> -->
+	<a style="border:1px solid #F00" href="/toAddOrder" >新增</a>
 	<table style="border:1px solid #F00">
 		<tr>
 			<td>序号</td>
@@ -41,7 +56,7 @@
 		<c:forEach items="${list}" var="item" varStatus="status" begin="0">
 		<tr>
 			<td>${status.index+1}</td>
-			<td><a href="javascript:void(0);" onclick="edit('${item.orderId }')">${item.orderName }</a></td>
+			<td><a href="javascript:void(0);" onclick="edit('${item.id }')">${item.orderName }</a></td>
 			<td>${item.price }</td>
 		</tr>
 		</c:forEach>

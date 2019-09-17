@@ -1,7 +1,7 @@
 package com.ellis.order.entity;
 
 public class Order {
-	private String orderId;
+	private String id;
 	private String orderName;
 	private String price;
 	
@@ -11,17 +11,17 @@ public class Order {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Order(String orderId, String orderName, String price) {
+	public Order(String id, String orderName, String price) {
 		super();
-		this.orderId = orderId;
+		this.id = id;
 		this.orderName = orderName;
 		this.price = price;
 	}
-	public String getOrderId() {
-		return orderId;
+	public String getId() {
+		return id;
 	}
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getOrderName() {
 		return orderName;
@@ -37,7 +37,7 @@ public class Order {
 	}
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", orderName=" + orderName + ", price=" + price + "]";
+		return "Order [id=" + id + ", orderName=" + orderName + ", price=" + price + "]";
 	}
 	
 }

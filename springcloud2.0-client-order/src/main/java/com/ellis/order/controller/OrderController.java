@@ -2,7 +2,9 @@ package com.ellis.order.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.ellis.order.entity.Order;
 import com.ellis.order.service.OrderService;
 
@@ -71,16 +74,32 @@ public class OrderController {
 	 * @return
 	 */
 	@RequestMapping("/addOrder")
-	@ResponseBody
-	public String addOrder(Order order){
+	public String addOrder(Order order,HttpServletResponse res){
 		//Order order = new Order("02","牛仔裤","56");
-		if("".equals(order.getOrderId())){
-			order.setOrderId(UUID.randomUUID().toString().replace("-", ""));
+		if("".equals(order.getId())){
+			order.setId(UUID.randomUUID().toString().replace("-", ""));
 			orderService.addOrder(order);
 		}else{
 			orderService.updateOrder(order);
 		}
-		return "success";
+		res.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=utf-8");
+		PrintWriter writer;
+		try {
+			writer = res.getWriter();
+			writer.write("<script type='text/javascript'>alert('保存成功！');window.location.href = '/orderList'</script>");
+//			Map<String, Object> map = new HashMap<String,Object>();
+//			map.put("code", "success");
+//			map.put("msg", "保存成功！");
+//			writer.print(JSON.toJSONString(map));
+			writer.flush();
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//return "redirect:/orderList";//不能跟writer.write('xxxx')一起用
+		return null;
 	}
 	
 	/**
